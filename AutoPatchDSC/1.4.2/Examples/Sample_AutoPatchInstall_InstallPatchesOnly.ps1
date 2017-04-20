@@ -1,5 +1,5 @@
 # This example installs any patches avialable from WSUS between 2am and 4am.
-# It does not execute any reboots.
+# It does not execute any reboots, nor install patches during the preflight window.
 Configuration OnlyPatchServerNoReboot {
     If (-not (Get-Module PSWindowsUpdate)) {Import-Module PSWindowsUpdate}
     Import-DscResource -ModuleName PSDesiredStateConfiguration
