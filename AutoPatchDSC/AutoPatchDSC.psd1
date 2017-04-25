@@ -29,11 +29,11 @@ Copyright = '(c) 2016 Microsoft. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'This resource provides automated patch installation during a defined patch window.  It is designed for use with WaitFor* constructs to allow reboots of different servers in a farm to reboot at different times to maintain high availability of a particular service such as SQL or SharePoint.  However, the module should work with farms of any type.'
 
-# Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '5.0'
-
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @('PSWindowsUpdate')
+
+# Minimum version of the Windows PowerShell engine required by this module
+PowerShellVersion = '5.0.0'
 
 # DSC resources to export from this module
 DscResourcesToExport = @('AutoPatchInstall', 'AutoPatchReboot', 'AutoPatchServices')
