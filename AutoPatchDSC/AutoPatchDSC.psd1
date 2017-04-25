@@ -24,7 +24,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = '(c) 2016 Microsoft. All rights reserved.'
 
 # Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '5.0'
+PowerShellVersion = '4.0'
 
 # Description of the functionality provided by this module
 Description = 'This resource provides automated patch installation during a defined patch window.  It is designed for use with WaitFor* constructs to allow reboots of different servers in a farm to reboot at different times to maintain high availability of a particular service such as SQL or SharePoint.  However, the module should work with farms of any type.'
