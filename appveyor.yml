@@ -1,8 +1,17 @@
-#---------------------------------#
-#      general configuration      #
-#---------------------------------#
+#---------------------------------# 
+#      environment configuration  # 
+#---------------------------------# 
+version: 1.4.2.{build}
 
-# version format
-version: 1.4.2
+install:
+    - git clone https://github.com/PowerShell/DscResource.Tests
+    - ps: |
+        Import-Module -Name .\DscResource.Tests\TestHelper.psm1 -Force
+        Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+        Install-Module -Name Pester -Repository PSGallery -Force
+
+#---------------------------------# 
+#      build configuration        # 
+#---------------------------------# 
 
 build: off
