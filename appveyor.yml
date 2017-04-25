@@ -5,5 +5,5 @@
 # version format
 version: 1.5.{build}
 
-build:off
+build: off
 
