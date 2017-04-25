@@ -33,7 +33,7 @@ Description = 'This resource provides automated patch installation during a defi
 RequiredModules = @('PSWindowsUpdate')
 
 # Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '5.0.0'
+PowerShellVersion = '5.0'
 
 # DSC resources to export from this module
 DscResourcesToExport = @('AutoPatchInstall', 'AutoPatchReboot', 'AutoPatchServices')
