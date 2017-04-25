@@ -3,4 +3,7 @@
 #---------------------------------#
 
 # version format
-version: 1.0.{build}
+version: 1.5.{build}
+
+build:off
+
