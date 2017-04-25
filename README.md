@@ -14,7 +14,7 @@ or comments.
 
 ## Resources
 
-* [AutoPatchInstall(#AutoPatchInstall)]: Provides a mechanism to install patches within a defined maintenance window. 
+* [AutoPatchInstall](#AutoPatchInstall): Provides a mechanism to install patches within a defined maintenance window. 
 
 * [AutoPatchServices](#AutoPatchServices): Provides a mechanism to control required services for use with rebooting. 
 
