@@ -37,4 +37,3 @@ Function Write-AutoPatchLog {
     elseif ($writeInformation) {Write-Information $output}
     else                       {Write-Verbose     $output}
 }
- 
