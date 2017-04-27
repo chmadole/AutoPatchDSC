@@ -255,11 +255,6 @@
             <# This method will check if all services defined in the $services array are started#>
             [bool] Test()
             {
-                <#
-                $servicesString = $null
-                (Get-Service -Name $this.ServicesRequiredToContinuePatching | Where-Object Status -eq 'Running').Name | % {$servicesString += "$_, "}
-                $currentRunningServices  = $servicesString.Trim(', ')
-                #>
                 $currentRunningServices  = (Get-Service | Where-Object Status -eq 'Running').Name
                 $optionalServicesToStart = (Compare-Object $This.ServicesToAttemptStarting $currentRunningServices | Where-Object SideIndicator -eq '<=').inputobject
 
