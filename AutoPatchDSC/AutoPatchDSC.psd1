@@ -9,7 +9,7 @@
 RootModule = 'AutoPatchDSC.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.4.2'
+ModuleVersion = '1.4.2.0'
 
 # ID used to uniquely identify this module
 GUID = '6b6347d3-9ded-4402-b57a-aa7dd8b710b8'
