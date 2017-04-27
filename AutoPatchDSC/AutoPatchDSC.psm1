@@ -1,4 +1,4 @@
-﻿Get-ChildItem (Join-Path $PSScriptRoot *.ps1) | % { . $_.FullName}
+﻿Get-ChildItem (Join-Path $PSScriptRoot *.ps1) | ForEach-Object { . $_.FullName}
 
 #region AutoPatchInstall Class
     <#
@@ -188,7 +188,7 @@
             $output = Get-WUInstall -IgnoreReboot -AcceptAll
 
             if (!$?) {
-                Write-AutoPatchLog $output #error was with 59 WC01 Prod... check the event log for wsus errors.
+                Write-AutoPatchLog $output
             }
                 
             # Recursive call to expedite further patching or a reboot if needed;
@@ -242,7 +242,7 @@
                 
                     Foreach ($service in $this.ServicesRequiredToContinuePatching) {
                         try {
-                            (Get-Service -Name $service -ErrorAction Stop | ? Status -ne 'Running').Name | Start-Service -ErrorAction Stop
+                            (Get-Service -Name $service -ErrorAction Stop | Where-Object Status -ne 'Running').Name | Start-Service -ErrorAction Stop
                         } catch {
                             Write-AutoPatchLog "[AutoPatchServices] Failed to start required service $service."
                         }
@@ -257,18 +257,18 @@
             {
                 <#
                 $servicesString = $null
-                (Get-Service -Name $this.ServicesRequiredToContinuePatching | ? Status -eq 'Running').Name | % {$servicesString += "$_, "}
+                (Get-Service -Name $this.ServicesRequiredToContinuePatching | Where-Object Status -eq 'Running').Name | % {$servicesString += "$_, "}
                 $currentRunningServices  = $servicesString.Trim(', ')
                 #>
-                $currentRunningServices  = (Get-Service | ? Status -eq 'Running').Name
-                $optionalServicesToStart = (Compare-Object $This.ServicesToAttemptStarting $currentRunningServices | ? SideIndicator -eq '<=').inputobject
+                $currentRunningServices  = (Get-Service | Where-Object Status -eq 'Running').Name
+                $optionalServicesToStart = (Compare-Object $This.ServicesToAttemptStarting $currentRunningServices | Where-Object SideIndicator -eq '<=').inputobject
 
                 if ($optionalServicesToStart) {
                     Write-AutoPatchLog "[AutoPatchServices] Attempting to start optional services $optionalServicesToStart"
                     
                     Foreach ($service in $optionalServicesToStart) {
                         try {
-                            (Get-Service -Name $service -ErrorAction Stop | ? Status -ne 'Running').Name | Start-Service -ErrorAction Stop
+                            (Get-Service -Name $service -ErrorAction Stop | Where-Object Status -ne 'Running').Name | Start-Service -ErrorAction Stop
                         } catch {
                             Write-AutoPatchLog "[AutoPatchServices] Failed to start optional service $service."
                         }
@@ -276,7 +276,7 @@
                 }
 
                 if ($this.ServicesRequiredToContinuePatching) {
-                    $requiredServicestoStart = (Compare-Object $This.ServicesRequiredToContinuePatching $currentRunningServices | ? SideIndicator -eq '<=').Name
+                    $requiredServicestoStart = (Compare-Object $This.ServicesRequiredToContinuePatching $currentRunningServices | Where-Object SideIndicator -eq '<=').Name
 
                     if ($requiredServicestoStart) {
                         Write-AutoPatchLog "[AutoPatchServices] The following required services are not running $requiredServicestoStart."
