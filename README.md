@@ -1,4 +1,6 @@
-| **master:** [![Build status](https://ci.appveyor.com/api/projects/status/k6d7snrsx1neqjcm/branch/master?svg=true)](https://ci.appveyor.com/project/chmadole/autopatchdsc/branch/master) | **dev:** [![Build status](https://ci.appveyor.com/api/projects/status/k6d7snrsx1neqjcm/branch/dev?svg=true)](https://ci.appveyor.com/project/chmadole/autopatchdsc/branch/dev) |
+| master | dev |
+|---|---|
+| [![Build status](https://ci.appveyor.com/api/projects/status/k6d7snrsx1neqjcm/branch/master?svg=true)](https://ci.appveyor.com/project/chmadole/autopatchdsc/branch/master) | [![Build status](https://ci.appveyor.com/api/projects/status/k6d7snrsx1neqjcm/branch/dev?svg=true)](https://ci.appveyor.com/project/chmadole/autopatchdsc/branch/dev) |
 
 # AutoPatchDSC
 
