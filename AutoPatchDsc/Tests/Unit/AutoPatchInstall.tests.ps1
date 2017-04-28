@@ -1,6 +1,8 @@
 $script:DSCModuleName   = 'AutoPatchDsc'
 $script:DSCResourceName = 'AutoPatchInstall'
 
+Import-module AutoPatchDsc
+
 <#
 #region HEADER
 [String] $script:moduleRoot = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $script:MyInvocation.MyCommand.Path))
