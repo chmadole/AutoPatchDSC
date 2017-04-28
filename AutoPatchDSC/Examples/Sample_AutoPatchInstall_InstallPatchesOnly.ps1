@@ -11,9 +11,9 @@ Configuration OnlyPatchServerNoReboot {
         #Install patches during maintenance window
         AutoPatchInstall InstallOSPatches {
             Name                          = 'InstallOSPatches'
-            PreflightWindowStart          = 'January 1st, 2017 1am'
-            PatchWindowStart              = 'January 1st, 2017 2am'
-            PatchWindowEnd                = 'January 1st, 2017 4am'
+            PreflightWindowStart          = Get-Date 'January 1 2017 1am'
+            PatchWindowStart              = Get-Date 'January 1 2017 2am'
+            PatchWindowEnd                = Get-Date 'January 1 2017 4am'
             InstallPatchesDuringPreflight = $false
             LogFile                       = 'c:\locallogs\AutoPatchInstall.log'
         }

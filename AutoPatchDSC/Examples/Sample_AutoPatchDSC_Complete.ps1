@@ -21,8 +21,8 @@ Configuration PatchOneServer {
         #Install patches during maintenance window 2am - 4am
         AutoPatchInstall InstallOSPatches {
             Name             = 'InstallOSPatches'
-            PatchWindowStart = 'January 1st, 2017 2am'
-            PatchWindowEnd   = 'January 1st, 2017 4am'
+            PatchWindowStart = Get-Date 'January 1 2017 2am'
+            PatchWindowEnd   = Get-Date 'January 1 2017 4am'
         }
 
         # A start-service call wiill be executed for all services listed (if the service isn't running).
@@ -38,8 +38,8 @@ Configuration PatchOneServer {
         #Reboot server on completion of patch installation
         AutoPatchReboot LocalReboot {
             Name             = 'LocalReboot'
-            PatchWindowStart = 'January 1st, 2017 2am'
-            PatchWindowEnd   = 'January 1st, 2017 4am'
+            PatchWindowStart = Get-Date 'January 1 2017 2am'
+            PatchWindowEnd   = Get-Date 'January 1 2017 4am'
             RebootMode       = 'MaintenanceWindowAutomaticReboot'
         }
     }
@@ -57,9 +57,9 @@ Configuration PatchTwoServers {
         #Install patches during the preflight window 1am - 2am or during the maintenance window 2am - 3am
         AutoPatchInstall InstallOSPatches {
             Name                          = 'InstallOSPatches'
-            PreflightWindowStart          = 'January 1st, 2017 1am'
-            PatchWindowStart              = 'January 1st, 2017 2am'
-            PatchWindowEnd                = 'January 1st, 2017 3am'
+            PreflightWindowStart          = Get-Date 'January 1 2017 1am'
+            PatchWindowStart              = Get-Date 'January 1 2017 2am'
+            PatchWindowEnd                = Get-Date 'January 1 2017 3am'
             InstallPatchesDuringPreflight = $True 
         }
 
@@ -73,9 +73,9 @@ Configuration PatchTwoServers {
         #Reboot server on completion of patch installation during the preflight window only, 1am - 2am
         AutoPatchReboot LocalReboot {
             Name                 = 'LocalReboot'
-            PreflightWindowStart = 'January 1st, 2017 1am' 
-            PatchWindowStart     = 'January 1st, 2017 2am'
-            PatchWindowEnd       = 'January 1st, 2017 3am'
+            PreflightWindowStart = Get-Date 'January 1 2017 1am' 
+            PatchWindowStart     = Get-Date 'January 1 2017 2am'
+            PatchWindowEnd       = Get-Date 'January 1 2017 3am'
             RebootMode           = 'PreFlightWindowAutomaticReboot'
         }
     }
@@ -84,10 +84,10 @@ Configuration PatchTwoServers {
         #Install patches during the preflight window 1am - 2am or during the maintenance window 3am - 4am
         AutoPatchInstall InstallOSPatches {
             Name                          = 'InstallOSPatches'
-            PatchWindowStart              = 'January 1st, 2017 3am'
-            PatchWindowEnd                = 'January 1st, 2017 4am'
+            PreflightWindowStart          = Get-Date 'January 1 2017 1am'
+            PatchWindowStart              = Get-Date 'January 1 2017 3am'
+            PatchWindowEnd                = Get-Date 'January 1 2017 4am'
             InstallPatchesDuringPreflight = $True
-            PreflightWindowStart          = 'January 1st, 2017 1am'
         }
     
         # A start-service call wiill be executed for all services listed (if the service isn't running).
@@ -119,8 +119,8 @@ Configuration PatchTwoServers {
         # for example from 2-3am Server1 can reboot, from 3-4am Server2 can reboot.
         AutoPatchReboot LocalReboot {
             Name             = 'LocalReboot'
-            PatchWindowStart = 'January 1st, 2017 3am'
-            PatchWindowEnd   = 'January 1st, 2017 4am'
+            PatchWindowStart = Get-Date 'January 1 2017 3am'
+            PatchWindowEnd   = Get-Date 'January 1 2017 4am'
             DependsOn        = '[WaitForAll]SqlServer01LocalReboot'
             RebootMode       = 'MaintenanceWindowAutomaticReboot'
         }
