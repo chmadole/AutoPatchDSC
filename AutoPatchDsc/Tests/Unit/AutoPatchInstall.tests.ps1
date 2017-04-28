@@ -28,7 +28,7 @@ try {
     #create sample parameter sets
     $script:propertySets = @(
         @{  Name             = 'InstallOSPatches'
-            PatchWindowStart = Get-Date '1/1/2017 2am'
+            PatchWindowStart = '1/1/2017 2am'
             PatchWindowEnd   = Get-Date '1/1/2017 4am' 
             }
         @{  Name                          = 'InstallOSPatches'
