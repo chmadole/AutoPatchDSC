@@ -1,4 +1,6 @@
-﻿Get-ChildItem (Join-Path $PSScriptRoot *.ps1) | ForEach-Object { . $_.FullName}
+﻿#requires -version 5.0
+
+Get-ChildItem (Join-Path $PSScriptRoot *.ps1) | ForEach-Object { . $_.FullName}
 
 #region AutoPatchInstall Class
     <#
@@ -158,10 +160,10 @@
         [void] initialize(){
             if (-not (Get-Module PSWindowsUpdate)) {Import-Module PSWindowsUpdate}
 
-            $this.LastBootUpTime        = $(Get-CimInstance -ClassName win32_OperatingSystem).lastbootuptime  #Note: this is producing extra output; could be improved by supressing it becuase it's not helpful.  Try: -Verbose 4>&1 | Out-Null
+            $this.LastBootUpTime        = $(Get-CimInstance -ClassName win32_OperatingSystem).lastbootuptime
             $this.inPreFlightWindow     = ($this.RunTime -ge $this.preflightStart)   -and ($this.RunTime -lt $this.patchWindowStart)
             $this.inMaintenanceWindow   = ($this.RunTime -ge $this.patchWindowStart) -and ($this.RunTime -lt $this.patchWindowEnd)
-            $this.wuList                = Get-WUList -NotCategory 'Definition Updates' # this produces extra output, but it's helpful, so I'm leaving it for now.
+            $this.wuList                = Get-WUList -NotCategory 'Definition Updates'
             $this.UpdatesPendingInstall = [String]$(($this.wuList).kb)
             $this.PendingRebootRequired = $(Get-WURebootStatus -Silent)
             $this.WsusInstallerStatus   = Get-WUInstallerStatus
